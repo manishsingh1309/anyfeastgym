@@ -41,7 +41,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const redeemUrl = `${supabaseUrl.replace('.supabase.co', '.lovable.app')}/redeem`;
+    const redeemUrl = `${supabaseUrl}/redeem`;
     
     const message = `Hi ${recipient_name}! 🎉\n\nYour AnyFeast coupon code is: ${code}\n\nRedeem it here: ${redeemUrl}\n\nEnjoy your personalised meal plans!\n— AnyFeast Team`;
 
