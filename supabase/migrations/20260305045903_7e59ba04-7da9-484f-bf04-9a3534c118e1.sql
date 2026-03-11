@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.redeem_coupon(text, uuid);

@@ -1,0 +1,4 @@
+project_id = "tcfvsbwpptrfoflyqieq"
+
+[functions.send-coupon-notification]
+verify_jwt = false
