@@ -14,9 +14,9 @@ interface StatCardProps {
 
 const variantStyles = {
   default: 'bg-card text-card-foreground',
-  crimson: 'bg-primary text-primary-foreground',
-  orange: 'bg-amber-600 text-white',
-  yellow: 'bg-amber-100 text-amber-900',
+  crimson: 'bg-[#B32024] text-white',
+  orange: 'bg-[#EF3E2D] text-white',
+  yellow: 'bg-[#2F8F4E] text-white hover:bg-[#267A3D]',
 };
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, subtitle, icon: Icon, trend, variant = 'default' }) => {

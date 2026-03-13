@@ -72,7 +72,7 @@ const SectionCard: React.FC<{ title: string; children: React.ReactNode }> = ({ t
 // Funnel built with plain divs (no external lib needed)
 const FunnelChart: React.FC = () => {
   const max = FUNNEL_DATA[0].value;
-  const colors = ['#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd'];
+  const colors = ['#B32024', '#EF3E2D', '#2F8F4E', '#43A047'];
 
   return (
     <div className="space-y-3">
@@ -127,7 +127,7 @@ const AnalyticsContent: React.FC = () => (
             <XAxis type="number" tick={{ fontSize: 12 }} />
             <YAxis dataKey="name" type="category" width={72} tick={{ fontSize: 12 }} />
             <Tooltip />
-            <Bar dataKey="members" name="Members Onboarded" fill="#6366f1" radius={[0, 4, 4, 0]} />
+            <Bar dataKey="members" name="Members Onboarded" fill="#B32024" radius={[0, 4, 4, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </SectionCard>
@@ -143,9 +143,9 @@ const AnalyticsContent: React.FC = () => (
             <YAxis tick={{ fontSize: 12 }} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="activations" name="New Activations" stroke="#6366f1" strokeWidth={2} dot={false} />
-            <Line type="monotone" dataKey="renewals" name="Renewals" stroke="#22c55e" strokeWidth={2} dot={false} />
-            <Line type="monotone" dataKey="churns" name="Churns" stroke="#ef4444" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="activations" name="New Activations" stroke="#B32024" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="renewals" name="Renewals" stroke="#2F8F4E" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="churns" name="Churns" stroke="#EF3E2D" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </SectionCard>
@@ -161,9 +161,9 @@ const AnalyticsContent: React.FC = () => (
             <YAxis tick={{ fontSize: 12 }} />
             <Tooltip />
             <Legend />
-            <Bar dataKey="sold" name="Licenses Sold" fill="#6366f1" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="active" name="Active Members" fill="#22c55e" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="renewal" name="Renewal Rate (%)" fill="#f59e0b" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="sold" name="Licenses Sold" fill="#B32024" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="active" name="Active Members" fill="#2F8F4E" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="renewal" name="Renewal Rate (%)" fill="#43A047" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </SectionCard>
@@ -191,8 +191,8 @@ const AnalyticsContent: React.FC = () => (
                   <span
                     className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
                       row.status === 'Success'
-                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                        : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                        ? 'bg-[#E6F4EC] text-[#2F8F4E]'
+                        : 'bg-[#FFC4C4] text-[#B32024]'
                     }`}
                   >
                     {row.status}
