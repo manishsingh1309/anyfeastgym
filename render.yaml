@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: anyfeastgym
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: VITE_SUPABASE_URL
+        fromDatabase:
+          name: anyfeastgym-db
+          property: connection_string
+      - key: VITE_SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: VITE_GOOGLE_CLIENT_ID
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: anyfeastgym-db
+    databaseName: anyfeastgym
+    user: postgres
