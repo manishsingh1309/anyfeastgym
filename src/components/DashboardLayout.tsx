@@ -4,11 +4,20 @@ import { useAuth } from '@/contexts/AuthContext';
 import logo from '@/assets/anyfeast-logo.png';
 import {
   LayoutDashboard, Users, Ticket, Award, FileText, BarChart3,
-  Settings, LogOut, Dumbbell, UserCheck, CreditCard, ChevronLeft, ChevronRight
+  Settings, LogOut, Dumbbell, UserCheck, CreditCard, ChevronLeft, ChevronRight,
+  User, Bell,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface NavItem {
   label: string;
@@ -165,13 +174,58 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
             </h2>
           </div>
           <div className="flex items-center gap-3">
-            <div className="text-right">
-              <p className="text-sm font-semibold">{user?.email}</p>
-              <p className="text-xs text-muted-foreground capitalize">{primaryRole?.replace('_', ' ')}</p>
-            </div>
-            <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
-              {user?.email?.[0]?.toUpperCase() || 'U'}
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-muted transition-colors focus:outline-none">
+                  <div className="text-right hidden sm:block">
+                    <p className="text-sm font-semibold leading-tight">
+                      {user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email || (user?.phone ? `+${user.phone}` : 'Account')}
+                    </p>
+                    <p className="text-xs text-muted-foreground capitalize leading-tight">
+                      {primaryRole?.replace(/_/g, ' ')}
+                    </p>
+                  </div>
+                  {user?.user_metadata?.avatar_url ? (
+                    <img
+                      src={user.user_metadata.avatar_url}
+                      alt="avatar"
+                      className="h-9 w-9 rounded-full object-cover ring-2 ring-primary/20"
+                    />
+                  ) : (
+                    <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm ring-2 ring-primary/20">
+                      {(user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email || 'U')[0]?.toUpperCase()}
+                    </div>
+                  )}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="pb-1">
+                  <p className="font-semibold text-sm truncate">
+                    {user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email || (user?.phone ? `+${user.phone}` : 'Account')}
+                  </p>
+                  <p className="text-xs text-muted-foreground capitalize font-normal">
+                    {primaryRole?.replace(/_/g, ' ')}
+                  </p>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => navigate('/settings')} className="cursor-pointer gap-2">
+                  <User className="h-4 w-4" /> View Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate('/settings')} className="cursor-pointer gap-2">
+                  <Settings className="h-4 w-4" /> Settings
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer gap-2 opacity-60" disabled>
+                  <Bell className="h-4 w-4" /> Notifications
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={handleSignOut}
+                  className="cursor-pointer gap-2 text-destructive focus:text-destructive"
+                >
+                  <LogOut className="h-4 w-4" /> Sign Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </header>
 

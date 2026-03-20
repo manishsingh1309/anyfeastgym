@@ -22,6 +22,12 @@ const GoogleIcon = () => (
 // ── Mock Google accounts (prototype) ─────────────────────────────────────────
 const MOCK_GOOGLE_ACCOUNTS: { name: string; email: string; picture: string; role: AppRole }[] = [
   {
+    name: 'Alex SuperAdmin',
+    email: 'alex.superadmin@gmail.com',
+    picture: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffe5b4',
+    role: 'super_admin',
+  },
+  {
     name: 'Sara Trainer',
     email: 'sara.trainer@gmail.com',
     picture: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=b6e3f4',
